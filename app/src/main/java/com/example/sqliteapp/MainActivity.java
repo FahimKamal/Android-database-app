@@ -45,6 +45,26 @@ public class MainActivity extends AppCompatActivity {
         addData();
         viewAll();
         updateDate();
+        deleteData();
+    }
+
+    public void deleteData() {
+        delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int deletedRow = mydb.deleteData(id.getText().toString());
+                if (deletedRow > 0){
+                    Toast.makeText(MainActivity.this, "Data Deleted", Toast.LENGTH_LONG).show();
+                    name.setText("");
+                    surname.setText("");
+                    marks.setText("");
+                    id.setText("");
+                }
+                else{
+                    Toast.makeText(MainActivity.this, "Data not Deleted", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
     }
 
     public void addData(){
